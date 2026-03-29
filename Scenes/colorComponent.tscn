@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cplb67h0ux8pm"]
+
+[ext_resource type="Script" uid="uid://c0o4r7v7teom2" path="res://Scripts/colorComponent.gd" id="1_rt0l7"]
+
+[node name="ColorComponent" type="Node" unique_id=1298953058]
+script = ExtResource("1_rt0l7")
+metadata/_custom_type_script = "uid://c0o4r7v7teom2"

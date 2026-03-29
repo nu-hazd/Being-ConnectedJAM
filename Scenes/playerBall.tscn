@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bktaa811d4jpj"]
+
+[ext_resource type="Script" uid="uid://hvpcsuss0v06" path="res://Scripts/playerBall.gd" id="1_t7ylc"]
+[ext_resource type="Texture2D" uid="uid://bmbckansudk2h" path="res://Assets/Sprites/whiteCircle.png" id="2_0oumt"]
+[ext_resource type="PackedScene" uid="uid://cplb67h0ux8pm" path="res://Scenes/colorComponent.tscn" id="3_0oumt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_utudc"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkki3"]
+radius = 32.0
+
+[node name="playerBall" type="RigidBody2D" unique_id=1332774776]
+physics_material_override = SubResource("PhysicsMaterial_utudc")
+gravity_scale = 0.0
+linear_damp_mode = 1
+linear_damp = 0.1
+script = ExtResource("1_t7ylc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1294795862]
+modulate = Color(0.7328676, 0.11539487, 0.35630694, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0oumt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882641083]
+shape = SubResource("CircleShape2D_mkki3")
+
+[node name="ColorComponent" parent="." unique_id=1298953058 node_paths=PackedStringArray("spriteToModulate") instance=ExtResource("3_0oumt")]
+spriteToModulate = NodePath("../Sprite2D")
+
+[connection signal="colorChanged" from="ColorComponent" to="." method="colorChanged"]

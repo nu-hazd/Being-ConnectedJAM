@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ykc06yo0x87f"]
+
+[ext_resource type="Script" uid="uid://buc4vb4h35vx3" path="res://Scenes/launcPad.gd" id="1_vimrd"]
+[ext_resource type="Texture2D" uid="uid://yykwe6ru318g" path="res://Assets/Sprites/rim.png" id="2_87ai5"]
+[ext_resource type="Texture2D" uid="uid://wn68w5y5q0no" path="res://Assets/Sprites/inner.png" id="3_twf3n"]
+[ext_resource type="Script" uid="uid://c0o4r7v7teom2" path="res://Scripts/colorComponent.gd" id="4_87ai5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vimrd"]
+radius = 64.0
+
+[node name="launchPad" type="Area2D" unique_id=919345923]
+collision_layer = 0
+script = ExtResource("1_vimrd")
+
+[node name="rim" type="Sprite2D" parent="." unique_id=1776938906]
+texture = ExtResource("2_87ai5")
+
+[node name="inner" type="Sprite2D" parent="." unique_id=1825395437]
+texture = ExtResource("3_twf3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=640050474]
+shape = SubResource("CircleShape2D_vimrd")
+
+[node name="ColorComponent" type="Node" parent="." unique_id=936376353 node_paths=PackedStringArray("spriteToModulate")]
+script = ExtResource("4_87ai5")
+spriteToModulate = NodePath("../rim")
+metadata/_custom_type_script = "uid://c0o4r7v7teom2"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
